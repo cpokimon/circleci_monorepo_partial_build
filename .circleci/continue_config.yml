@@ -8,25 +8,28 @@ parameters:
     type: boolean
     default: false
 
-workflows:
-  build-all:
-    working_directory: /app
+jobs:
+  build-and-push:
     docker:
       - image: docker:17.05.0-ce-git
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Build services
-          command: |
-            - docker-compose up -d
+      steps:
+        - checkout
+        - setup_remote_docker
+        - run:
+            name: Build services
+            command: |
+              - docker-compose up -d
+        - when:
+            condition: << pipeline.parameters.run-build-service-1-job >>
+            steps:
+              -run: echo "service_1_build"
+        - when:
+            condition: << pipeline.parameters.run-build-service-2-job >>
+            steps:
+              -run: echo "service_2_build"
 
-      when: << pipeline.parameters.run-build-service-1-job >>
-        jobs:
-          - run:
-            #publish1
-
-      when: << pipeline.parameters.run-build-service-2-job >>
-        jobs:
-          - run:
-            #publish2
+workflows:
+  version: 2
+  build-all:
+    jobs:
+      - build-and-push
