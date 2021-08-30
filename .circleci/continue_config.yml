@@ -1,0 +1,32 @@
+version: 2.1
+
+parameters:
+  run-build-service-1-job:
+    type: boolean
+    default: false
+  run-build-service-2-job:
+    type: boolean
+    default: false
+
+workflows:
+  build-all:
+    working_directory: /app
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build services
+          command: |
+            - docker-compose up -d
+
+      when: << pipeline.parameters.run-build-service-1-job >>
+        jobs:
+          - run:
+            #publish1
+
+      when: << pipeline.parameters.run-build-service-2-job >>
+        jobs:
+          - run:
+            #publish2
