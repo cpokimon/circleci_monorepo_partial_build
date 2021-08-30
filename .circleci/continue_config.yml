@@ -15,10 +15,14 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Build services
-          command: |
-            - docker-compose up -d
+      - when:
+          condition:
+            or: [ << pipeline.parameters.run-build-service-1-job >>, << pipeline.parameters.run-build-service-2-job >>]
+          steps:
+            - run:
+                name: Build services
+                command: |
+                  docker-compose up -d
       - when:
           condition: << pipeline.parameters.run-build-service-1-job >>
           steps:
