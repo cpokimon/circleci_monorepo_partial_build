@@ -22,7 +22,7 @@ workflows:
           mapping:
             service_1/.* run-build-service-1-job true
             service_2/.* run-build-service-2-job true
-          base-revision: master
+          base-revision: main
           # this is the path of the configuration we should trigger once
           # path filtering and pipeline parameter value updates are
           # complete. In this case, we are using the parent dynamic
