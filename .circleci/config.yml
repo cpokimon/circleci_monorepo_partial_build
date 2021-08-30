@@ -19,7 +19,7 @@ workflows:
           # 3-column, whitespace-delimited mapping. One mapping per
           # line:
           # <regex path-to-test> <parameter-to-set> <value-of-pipeline-parameter>
-          mapping:
+          mapping: |
             service_1/.* run-build-service-1-job true
             service_2/.* run-build-service-2-job true
           base-revision: main
