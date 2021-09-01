@@ -8,6 +8,10 @@ parameters:
     type: boolean
     default: false
 
+orb:
+  irc: circleci/irc@0.2.0
+
+
 jobs:
   build-and-push:
     docker:
