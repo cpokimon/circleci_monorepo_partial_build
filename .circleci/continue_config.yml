@@ -31,6 +31,9 @@ jobs:
           condition: << pipeline.parameters.run-build-service-2-job >>
           steps:
             - run: echo "service_2_build"
+      - irc/notify:
+          channel: circle-notify
+          message: Build completed!
 
 workflows:
   version: 2
