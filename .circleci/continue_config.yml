@@ -8,7 +8,7 @@ parameters:
     type: boolean
     default: false
 
-orb:
+orbs:
   irc: circleci/irc@0.2.0
 
 
