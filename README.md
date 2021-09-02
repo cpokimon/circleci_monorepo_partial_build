@@ -1,1 +1,1 @@
-[![CircleCI](https://circleci.com/gh/circleci/circleci_monorepo_partial_build.svg?style=svg)](https://app.circleci.com/pipelines/github/cpokimon/circleci_monorepo_partial_build)
+[![CircleCI](https://circleci.com/gh/circleci/circleci_monorepo_partial_build.svg?style=shield)](https://app.circleci.com/pipelines/github/cpokimon/circleci_monorepo_partial_build)
